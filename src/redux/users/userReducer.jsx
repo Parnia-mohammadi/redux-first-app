@@ -17,5 +17,7 @@ export default function userReducer(state = initialState, action) {
       return { ...state, loading: false, data: action.payload, error: "" };
     case Fetch_Users_Failure:
       return { ...state, loading: false, error: action.payload, data: [] };
+    default:
+      return state;
   }
 }
