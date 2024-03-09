@@ -4,7 +4,7 @@ import {
   Fetch_Users_Success,
 } from "./userTypes";
 
-initialState = {
+const initialState = {
   loading: false,
   data: [],
   error: "",

@@ -12,8 +12,8 @@ export const fetchUsers = () => (dispatch) => {
   dispatch({ type: Fetch_Users_Request });
   axios
     .get("https://jsonplaceholder.typicode.com/users")
-    .catch((res) => dispatch({ type: Fetch_Users_Success, payload: res.data }))
-    .then((err) =>
+    .then((res) => dispatch({ type: Fetch_Users_Success, payload: res.data }))
+    .catch((err) =>
       dispatch({ type: Fetch_Users_Failure, payload: err.message })
     );
 };
