@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { buyMilk } from "../redux/milk/milkActions";
+import { buy_milk } from "../features/milk/milkSlice";
+// import { buyMilk } from "../redux/milk/milkActions";
 
 function MilkContainer() {
   const [value, setValue] = useState(0);
@@ -14,7 +15,8 @@ function MilkContainer() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button onClick={() => dispatch(buyMilk(value))}>Buy cake</button>
+      {/* <button onClick={() => dispatch(buyMilk(value))}>Buy cake</button> */}
+      <button onClick={() => dispatch(buy_milk(value))}>Buy cake</button>
     </div>
   );
 }
