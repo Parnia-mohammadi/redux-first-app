@@ -1,8 +1,9 @@
 import { Provider } from "react-redux";
 import CakeContainer from "./components/CakeContainer";
-import store from "./redux/Store";
 import MilkContainer from "./components/MilkContainer";
-import UsersList from "./components/UsersList";
+import store from "./features/store";
+// import store from "./redux/Store";
+// import UsersList from "./components/UsersList";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <CakeContainer />
         <MilkContainer />
         <hr />
-        <UsersList />
+        {/* <UsersList /> */}
       </Provider>
     </div>
   );
