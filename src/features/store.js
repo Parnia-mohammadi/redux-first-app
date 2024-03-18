@@ -5,6 +5,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cakeReducer from "./cake/cakeSlice";
 import milkReducer from "./milk/milkSlice";
+import userReducer from "./user/userSlice";
 
 // this is the first method with redux
 // const store = createStore(rootReducers, composeWithDevTools(applyMiddleware(thunk)));
@@ -14,6 +15,7 @@ const store = configureStore({
   reducer: {
     cake: cakeReducer,
     milk: milkReducer,
+    user: userReducer,
   },
 });
 export default store;

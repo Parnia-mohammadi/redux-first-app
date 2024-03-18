@@ -41,7 +41,9 @@ export const getAsyncUsers = createAsyncThunk(
   "user/getAsyncUsers",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = axios.get("https://jsonplaceholder.typicode.com/users");
+      const { data } = await axios.get(
+        "https://jsonplaceholder.typicode.com/users"
+      );
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -55,25 +57,47 @@ const initialState = {
   error: "",
 };
 
+// The object notation for `createSlice.extraReducers` has been removed. Please use the 'builder callback' notation instead
+// const userSlice = createSlice({
+//   name: "user",
+//   initialState,
+//   extraReducers: {
+//     [getAsyncUsers.pending]: (state, action) => {
+//       state.loading = true;
+//       state.data = [];
+//       state.error = "";
+//     },
+//     [getAsyncUsers.fulfilled]: (state, action) => {
+//       state.loading = false;
+//       state.data = action.payload;
+//       state.error = "";
+//     },
+//     [getAsyncUsers.rejected]: (state, action) => {
+//       state.loading = false;
+//       state.data = [];
+//       state.error = action.payload;
+//     },
+//   },
+// });
 const userSlice = createSlice({
   name: "user",
   initialState,
-  extraReducers: {
-    [getAsyncUsers.pending]: (state, action) => {
+  extraReducers: (builder) => {
+    builder.addCase(getAsyncUsers.pending, (state, action) => {
       state.loading = true;
       state.data = [];
       state.error = "";
-    },
-    [getAsyncUsers.fulfilled]: (state, action) => {
+    });
+    builder.addCase(getAsyncUsers.fulfilled, (state, action) => {
       state.loading = false;
       state.data = action.payload;
       state.error = "";
-    },
-    [getAsyncUsers.rejected]: (state, action) => {
+    });
+    builder.addCase(getAsyncUsers.rejected, (state, action) => {
       state.loading = false;
       state.data = [];
       state.error = action.payload;
-    },
+    });
   },
 });
 
